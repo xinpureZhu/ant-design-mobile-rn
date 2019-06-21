@@ -28,6 +28,7 @@ export class Tabs extends React.PureComponent<TabsProps, StateType> {
     tabDirection: 'horizontal',
     distanceToChangeTab: 0.3,
     style: {},
+    tabBarContentViewStyle: {},
   };
   static DefaultTabBar = DefaultTabBar;
 
@@ -75,6 +76,7 @@ export class Tabs extends React.PureComponent<TabsProps, StateType> {
       usePaged,
       destroyInactiveTab,
       keyboardShouldPersistTaps,
+      tabBarContentViewStyle,
     } = this.props;
     const { currentTab = 0, containerWidth = 0 } = this.state;
     const content = tabs.map((tab, index) => {
@@ -109,7 +111,7 @@ export class Tabs extends React.PureComponent<TabsProps, StateType> {
               e.nativeEvent.position * this.state.containerWidth,
             );
           }}
-          style={{ flex: 1 }}
+          style={{ flex: 1, ...tabBarContentViewStyle as object }}
           onPageSelected={e => {
             const index = e.nativeEvent.position;
             this.setState(
@@ -155,6 +157,7 @@ export class Tabs extends React.PureComponent<TabsProps, StateType> {
         alwaysBounceVertical={false}
         keyboardDismissMode="on-drag"
         keyboardShouldPersistTaps={keyboardShouldPersistTaps}
+        style={{ ...tabBarContentViewStyle as object }}
       >
         {content}
       </Animated.ScrollView>

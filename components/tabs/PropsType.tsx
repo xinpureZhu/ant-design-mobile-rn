@@ -99,4 +99,7 @@ export interface PropsType {
   useLeftInsteadTransform?: boolean;
   style?: StyleProp<ViewStyle>;
   keyboardShouldPersistTaps?: boolean;
+
+  /**  */
+  tabBarContentViewStyle?: StyleProp<ViewStyle>;
 }
